@@ -7,23 +7,123 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #111;
       color: white;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: #000;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    section {
+      padding: 80px 20px;
       text-align: center;
-      padding: 100px 20px;
     }
+
     h1 {
-      font-size: 48px;
+      font-size: 60px;
     }
-    p {
-      font-size: 20px;
-      color: #bbb;
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .project-card {
+      background: #222;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #000;
     }
   </style>
 </head>
 <body>
-  <h1>Hi, I'm Sudheer 👋</h1>
-  <p>Welcome to my portfolio website</p>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h1>Hi, I'm Sudheer 👋</h1>
+    <p>A Computer Science student passionate about web development and DSA.</p>
+    <a href="resume.pdf" class="btn" download>Download Resume</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a B.Tech CSE student passionate about web development,
+      data structures, AI, and building modern websites.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>A responsive personal portfolio website hosted on Vercel.</p>
+    </div>
+    <div class="project-card">
+      <h3>Student Management System</h3>
+      <p>A CRUD-based student record management project.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: sudheer@example.com</p>
+    <p>
+      GitHub:
+      <a href="https://github.com/Sudheer78s" target="_blank" style="color:white;">
+        github.com/Sudheer78s
+      </a>
+    </p>
+    <p>
+      LinkedIn:
+      <a href="https://linkedin.com" target="_blank" style="color:white;">
+        linkedin.com/in/sudheer
+      </a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Sudheer Sharma | Portfolio
+  </footer>
+
 </body>
 </html>

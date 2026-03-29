@@ -1,129 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudheer Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      scroll-behavior: smooth;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-      background: #000;
-      position: sticky;
-      top: 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 60px;
-    }
-
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: white;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .project-card {
-      background: #222;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 500px;
-      border-radius: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio Showcase</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Background Elements -->
+    <div class="bg-blur blur-1"></div>
+    <div class="bg-blur blur-2"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="logo">
+            <span class="gradient-text">Portfolio.</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero section-spacing">
+        <div class="hero-content reveal-up">
+            <h3 class="subtitle">Hello, I'm</h3>
+            <h1 class="title">A Creative <br><span class="gradient-text type-effect">Developer</span></h1>
+            <p class="description">
+                I build beautiful, interactive, and high-performance digital experiences. Specializing in modern web aesthetics and robust code architectures.
+            </p>
+            <div class="cta-group">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Let's Talk</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="glass-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="glass-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="glass-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="hero-image reveal-right">
+            <!-- A stylish placeholder that looks like an abstract shape or 3d shape -->
+            <div class="blob-wrapper glass">
+                <div class="blob-content">
+                    <i class="fa-solid fa-code icon-massive gradient-text"></i>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="home">
-    <h1>Hi, I'm Sudheer 👋</h1>
-    <p>A Computer Science student passionate about web development and DSA.</p>
-    <a href="resume.pdf" class="btn" download>Download Resume</a>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about section-spacing">
+        <div class="section-title reveal-up">
+            <h2>About <span class="gradient-text">Me</span></h2>
+        </div>
+        <div class="about-container glass reveal-up">
+            <div class="about-text">
+                <h3>Transforming ideas into digital reality.</h3>
+                <p>I am a passionate software developer dedicated to crafting clean, functional, and visually stunning web applications. With a strong eye for design and a focus on user experience, I blend technical pragmatism with aesthetic creativity.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4 class="gradient-text">3+</h4>
+                        <p>Years Exprerience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 class="gradient-text">50+</h4>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 class="gradient-text">100%</h4>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a B.Tech CSE student passionate about web development,
-      data structures, AI, and building modern websites.
-    </p>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills section-spacing">
+        <div class="section-title reveal-up">
+            <h2>My <span class="gradient-text">Expertise</span></h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card glass reveal-up" style="transition-delay: 100ms">
+                <i class="fab fa-html5 skill-icon"></i>
+                <h3>Frontend Architecture</h3>
+                <p>Building responsive, accessible, and highly-performant UI designs with modern HTML, CSS, and component driven frameworks.</p>
+            </div>
+            <div class="skill-card glass reveal-up" style="transition-delay: 200ms">
+                <i class="fab fa-js skill-icon"></i>
+                <h3>JavaScript Mastery</h3>
+                <p>Interactive web features, complex logic implementation, animations, and utilizing the latest ES6+ syntax to deliver robust solutions.</p>
+            </div>
+            <div class="skill-card glass reveal-up" style="transition-delay: 300ms">
+                <i class="fas fa-layer-group skill-icon"></i>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive interfaces with appealing aesthetics, ensuring an engaging and seamless experience for users.</p>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Portfolio Website</h3>
-      <p>A responsive personal portfolio website hosted on Vercel.</p>
-    </div>
-    <div class="project-card">
-      <h3>Student Management System</h3>
-      <p>A CRUD-based student record management project.</p>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects section-spacing">
+        <div class="section-title reveal-up">
+            <h2>Featured <span class="gradient-text">Projects</span></h2>
+        </div>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card glass reveal-up">
+                <div class="project-img-placeholder">
+                    <span>E-Commerce Dashboard</span>
+                </div>
+                <div class="project-info">
+                    <h3>Glow Metrics UI</h3>
+                    <p>A highly interactive and dark-themed dashboard tailored for analytical insights using elegant visualizations.</p>
+                    <div class="tags">
+                        <span class="tag glass">React</span>
+                        <span class="tag glass">Tailwind</span>
+                        <span class="tag glass">Chart.js</span>
+                    </div>
+                    <a href="#" class="view-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card glass reveal-up" style="transition-delay: 150ms">
+                <div class="project-img-placeholder" style="background: linear-gradient(135deg, rgba(82,0,255,0.4), rgba(0,255,163,0.4));">
+                    <span>Social Platform</span>
+                </div>
+                <div class="project-info">
+                    <h3>Vibe Connect</h3>
+                    <p>A modern decentralized social application with real-time features and stunning glassmorphism layouts.</p>
+                    <div class="tags">
+                        <span class="tag glass">Next.js</span>
+                        <span class="tag glass">Node.js</span>
+                        <span class="tag glass">WebSockets</span>
+                    </div>
+                    <a href="#" class="view-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card glass reveal-up" style="transition-delay: 300ms">
+                <div class="project-img-placeholder" style="background: linear-gradient(135deg, rgba(255,0,128,0.4), rgba(121,40,202,0.4));">
+                    <span>AI Tool Planner</span>
+                </div>
+                <div class="project-info">
+                    <h3>Synapse Assistant</h3>
+                    <p>An artificial intelligence integration tool designed to automate complex day-to-day developer tasks seamlessly.</p>
+                    <div class="tags">
+                        <span class="tag glass">Vue 3</span>
+                        <span class="tag glass">Python</span>
+                        <span class="tag glass">OpenAI</span>
+                    </div>
+                    <a href="#" class="view-btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: sudheer@example.com</p>
-    <p>
-      GitHub:
-      <a href="https://github.com/Sudheer78s" target="_blank" style="color:white;">
-        github.com/Sudheer78s
-      </a>
-    </p>
-    <p>
-      LinkedIn:
-      <a href="https://linkedin.com" target="_blank" style="color:white;">
-        linkedin.com/in/sudheer
-      </a>
-    </p>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-spacing">
+        <div class="contact-box glass reveal-up">
+            <h2>Let's build something <span class="gradient-text">amazing!</span></h2>
+            <p>I'm currently available for freelance work and open to new opportunities.</p>
+            <form class="contact-form">
+                <div class="input-group">
+                    <input type="text" placeholder="Your Name" required class="glass-input">
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Your Email" required class="glass-input">
+                </div>
+                <div class="input-group">
+                    <textarea rows="4" placeholder="Your Message" required class="glass-input"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
 
-  <footer>
-    © 2026 Sudheer Sharma | Portfolio
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        <div class="social-links-footer">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

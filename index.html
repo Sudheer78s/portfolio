@@ -3,22 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudheer | Developer Portfolio</title>
+<title>Sudheer | Ultra Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-  background:#0a0a0a;
+  background:#050505;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* SCROLL BAR */
-::-webkit-scrollbar{width:8px;}
-::-webkit-scrollbar-thumb{background:#4facfe;border-radius:10px;}
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.loader-text{
+  font-size:30px;
+  animation:blink 1s infinite;
+}
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* CURSOR */
+.cursor{
+  width:20px;
+  height:20px;
+  border:2px solid #4facfe;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:0.1s;
+}
 
 /* NAVBAR */
 nav{
@@ -86,7 +115,7 @@ nav ul li a:hover{color:#4facfe;}
 }
 .btn:hover{transform:scale(1.1);}
 
-/* PROFILE */
+/* IMAGE */
 .hero img{
   width:320px;
   border-radius:50%;
@@ -110,7 +139,7 @@ h2{
   margin-bottom:30px;
 }
 
-/* CARDS */
+/* CARD */
 .card{
   background:rgba(255,255,255,0.05);
   padding:20px;
@@ -125,13 +154,28 @@ h2{
   box-shadow:0 0 20px rgba(79,172,254,0.3);
 }
 
-/* SKILLS */
-.skills span{
-  padding:10px 20px;
-  margin:10px;
-  display:inline-block;
+/* SKILL BAR */
+.skill{
+  margin:20px 0;
+}
+.bar{
+  background:#222;
   border-radius:20px;
-  border:1px solid #333;
+  overflow:hidden;
+}
+.bar span{
+  display:block;
+  height:10px;
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
+}
+
+/* TIMELINE */
+.timeline{
+  border-left:2px solid #4facfe;
+  padding-left:20px;
+}
+.timeline div{
+  margin:20px 0;
 }
 
 /* FOOTER */
@@ -151,10 +195,14 @@ footer{
   opacity:1;
   transform:translateY(0);
 }
+
 </style>
 </head>
 
 <body>
+
+<div id="loader"><div class="loader-text">Loading...</div></div>
+<div class="cursor"></div>
 
 <nav>
   <div class="logo">Sudheer</div>
@@ -162,6 +210,7 @@ footer{
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#timeline">Journey</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -179,19 +228,36 @@ footer{
 <section id="about" class="reveal">
   <h2>About Me</h2>
   <div class="card">
-    <p>I am a passionate developer focused on building modern and responsive websites with great UI.</p>
+    Passionate developer building modern websites and solving real-world problems.
   </div>
 </section>
 
 <section id="skills" class="reveal">
   <h2>Skills</h2>
-  <div class="skills">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-    <span>C++</span>
-    <span>DSA</span>
-    <span>Git</span>
+
+  <div class="skill">
+    HTML
+    <div class="bar"><span style="width:90%"></span></div>
+  </div>
+
+  <div class="skill">
+    CSS
+    <div class="bar"><span style="width:85%"></span></div>
+  </div>
+
+  <div class="skill">
+    JavaScript
+    <div class="bar"><span style="width:75%"></span></div>
+  </div>
+
+</section>
+
+<section id="timeline" class="reveal">
+  <h2>Journey</h2>
+  <div class="timeline">
+    <div>🎓 Started B.Tech CSE</div>
+    <div>💻 Learned Web Development</div>
+    <div>🚀 Built Portfolio</div>
   </div>
 </section>
 
@@ -199,13 +265,11 @@ footer{
   <h2>Projects</h2>
 
   <div class="card">
-    <h3>Portfolio</h3>
-    <p>Modern responsive portfolio website.</p>
+    Portfolio Website - Modern UI
   </div>
 
   <div class="card">
-    <h3>Student System</h3>
-    <p>CRUD-based system using JS.</p>
+    Student Management System
   </div>
 
 </section>
@@ -213,7 +277,6 @@ footer{
 <section id="contact" class="reveal">
   <h2>Contact</h2>
   <p>Email: sudheer@example.com</p>
-  <p>GitHub: github.com/Sudheer78s</p>
 </section>
 
 <footer>
@@ -222,32 +285,37 @@ footer{
 
 <script>
 
-/* TYPING EFFECT */
-const text = ["Web Developer", "DSA Enthusiast", "Problem Solver"];
-let i=0,j=0,current='',isDeleting=false;
+/* LOADER */
+window.onload=()=>{document.getElementById("loader").style.display="none";}
+
+/* CURSOR */
+document.addEventListener("mousemove",e=>{
+  document.querySelector(".cursor").style.top=e.clientY+"px";
+  document.querySelector(".cursor").style.left=e.clientX+"px";
+});
+
+/* TYPING */
+const text=["Web Developer","DSA Enthusiast","Problem Solver"];
+let i=0,j=0,current='',del=false;
 function type(){
-  if(i<text.length){
-    if(!isDeleting && j<=text[i].length){
-      current=text[i].substring(0,j++);
-    } else if(isDeleting && j>=0){
-      current=text[i].substring(0,j--);
-    }
-    document.getElementById("typing").innerHTML=current;
-    if(j==text[i].length){isDeleting=true;}
-    if(j==0){isDeleting=false;i++;}
-  } else i=0;
-  setTimeout(type,100);
+ if(i<text.length){
+  if(!del && j<=text[i].length){current=text[i].substring(0,j++);}
+  else if(del && j>=0){current=text[i].substring(0,j--);}
+  document.getElementById("typing").innerHTML=current;
+  if(j==text[i].length)del=true;
+  if(j==0){del=false;i++;}
+ }else i=0;
+ setTimeout(type,100);
 }
 type();
 
 /* SCROLL REVEAL */
 window.addEventListener("scroll",()=>{
-  document.querySelectorAll(".reveal").forEach(el=>{
-    let top=el.getBoundingClientRect().top;
-    if(top<window.innerHeight-100){
-      el.classList.add("active");
-    }
-  });
+ document.querySelectorAll(".reveal").forEach(el=>{
+  if(el.getBoundingClientRect().top<window.innerHeight-100){
+    el.classList.add("active");
+  }
+ });
 });
 
 </script>

@@ -3,92 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudheer | Ultra Portfolio</title>
+<title>Sudheer | Apple Style Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
-
-/* ================= GLOBAL ================= */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-  background:#050505;
+  background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* LOADER */
-#loader{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-.loader-text{
-  font-size:30px;
-  animation:blink 1s infinite;
-}
-@keyframes blink{
-  50%{opacity:0;}
-}
-
-/* CURSOR */
-.cursor{
-  width:20px;
-  height:20px;
-  border:2px solid #4facfe;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:0.1s;
-}
-
-/* NAVBAR */
+/* NAV */
 nav{
   position:fixed;
   width:100%;
   padding:20px 10%;
   display:flex;
   justify-content:space-between;
-  backdrop-filter:blur(15px);
-  background:rgba(0,0,0,0.6);
-  z-index:1000;
+  backdrop-filter:blur(20px);
 }
 
 .logo{
-  font-size:26px;
+  font-size:24px;
   font-weight:800;
-  background:linear-gradient(90deg,#00f2fe,#4facfe);
-  -webkit-background-clip:text;
-  color:transparent;
+  color:#fff;
 }
 
-nav ul{display:flex;gap:30px;}
-nav ul li{list-style:none;}
-nav ul li a{
-  text-decoration:none;
-  color:#aaa;
-  transition:0.3s;
-}
-nav ul li a:hover{color:#4facfe;}
-
-/* HERO */
-.hero{
+section{
   height:100vh;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  padding:0 10%;
+  flex-direction:column;
 }
 
-.hero-text h1{
-  font-size:70px;
+/* HERO */
+.hero h1{
+  font-size:80px;
+  text-align:center;
 }
 
 .gradient{
@@ -97,225 +55,102 @@ nav ul li a:hover{color:#4facfe;}
   color:transparent;
 }
 
-.typing{
-  font-size:25px;
-  margin-top:10px;
-  color:#aaa;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 30px;
-  border-radius:30px;
-  background:linear-gradient(90deg,#00f2fe,#4facfe);
-  text-decoration:none;
-  color:#fff;
-  transition:0.3s;
-}
-.btn:hover{transform:scale(1.1);}
-
-/* IMAGE */
-.hero img{
-  width:320px;
-  border-radius:50%;
-  box-shadow:0 0 60px rgba(79,172,254,0.5);
-  animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
-}
-
-/* SECTION */
-section{
-  padding:120px 10%;
-  text-align:center;
-}
-
-h2{
-  font-size:45px;
-  margin-bottom:30px;
-}
-
-/* CARD */
+/* 3D CARD */
 .card{
-  background:rgba(255,255,255,0.05);
-  padding:20px;
+  width:300px;
+  height:200px;
+  background:#111;
   border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   margin:20px;
-  backdrop-filter:blur(10px);
   transition:0.3s;
+  transform-style:preserve-3d;
 }
 
 .card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 20px rgba(79,172,254,0.3);
+  transform:rotateY(15deg) rotateX(10deg);
 }
 
-/* SKILL BAR */
-.skill{
-  margin:20px 0;
+/* CHATBOT */
+.chatbot{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:300px;
+  background:#111;
+  border-radius:15px;
+  padding:10px;
 }
-.bar{
+
+.chatbot input{
+  width:100%;
+  padding:10px;
+  border:none;
   background:#222;
-  border-radius:20px;
-  overflow:hidden;
-}
-.bar span{
-  display:block;
-  height:10px;
-  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  color:#fff;
 }
 
-/* TIMELINE */
-.timeline{
-  border-left:2px solid #4facfe;
-  padding-left:20px;
+.chatbox{
+  height:150px;
+  overflow:auto;
+  font-size:14px;
+  margin-bottom:10px;
 }
-.timeline div{
-  margin:20px 0;
-}
-
-/* FOOTER */
-footer{
-  padding:40px;
-  text-align:center;
-  background:#000;
-}
-
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(50px);
-  transition:1s;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="loader"><div class="loader-text">Loading...</div></div>
-<div class="cursor"></div>
-
 <nav>
   <div class="logo">Sudheer</div>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#timeline">Journey</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-text">
-    <h1>Hi, I'm <span class="gradient">Sudheer</span></h1>
-    <div class="typing" id="typing"></div>
-    <a href="#" class="btn">Download Resume</a>
-  </div>
-  <img src="profile.png">
+<section class="hero">
+  <h1>Hello, I'm <span class="gradient">Sudheer</span></h1>
 </section>
 
-<section id="about" class="reveal">
-  <h2>About Me</h2>
-  <div class="card">
-    Passionate developer building modern websites and solving real-world problems.
-  </div>
-</section>
-
-<section id="skills" class="reveal">
-  <h2>Skills</h2>
-
-  <div class="skill">
-    HTML
-    <div class="bar"><span style="width:90%"></span></div>
-  </div>
-
-  <div class="skill">
-    CSS
-    <div class="bar"><span style="width:85%"></span></div>
-  </div>
-
-  <div class="skill">
-    JavaScript
-    <div class="bar"><span style="width:75%"></span></div>
-  </div>
-
-</section>
-
-<section id="timeline" class="reveal">
-  <h2>Journey</h2>
-  <div class="timeline">
-    <div>🎓 Started B.Tech CSE</div>
-    <div>💻 Learned Web Development</div>
-    <div>🚀 Built Portfolio</div>
-  </div>
-</section>
-
-<section id="projects" class="reveal">
+<section>
   <h2>Projects</h2>
-
-  <div class="card">
-    Portfolio Website - Modern UI
-  </div>
-
-  <div class="card">
-    Student Management System
-  </div>
-
+  <div class="card">Project 1</div>
+  <div class="card">Project 2</div>
 </section>
 
-<section id="contact" class="reveal">
-  <h2>Contact</h2>
-  <p>Email: sudheer@example.com</p>
-</section>
-
-<footer>
-  © 2026 Sudheer Sharma
-</footer>
+<!-- CHATBOT -->
+<div class="chatbot">
+  <div class="chatbox" id="chatbox"></div>
+  <input type="text" id="input" placeholder="Ask me...">
+</div>
 
 <script>
 
-/* LOADER */
-window.onload=()=>{document.getElementById("loader").style.display="none";}
+/* GSAP ANIMATION */
+gsap.from(".hero h1",{y:100,opacity:0,duration:1});
 
-/* CURSOR */
-document.addEventListener("mousemove",e=>{
-  document.querySelector(".cursor").style.top=e.clientY+"px";
-  document.querySelector(".cursor").style.left=e.clientX+"px";
+/* PARALLAX */
+window.addEventListener("scroll",()=>{
+  document.querySelector(".hero h1").style.transform =
+  "translateY("+window.scrollY*0.5+"px)";
 });
 
-/* TYPING */
-const text=["Web Developer","DSA Enthusiast","Problem Solver"];
-let i=0,j=0,current='',del=false;
-function type(){
- if(i<text.length){
-  if(!del && j<=text[i].length){current=text[i].substring(0,j++);}
-  else if(del && j>=0){current=text[i].substring(0,j--);}
-  document.getElementById("typing").innerHTML=current;
-  if(j==text[i].length)del=true;
-  if(j==0){del=false;i++;}
- }else i=0;
- setTimeout(type,100);
-}
-type();
+/* AI CHATBOT */
+const input=document.getElementById("input");
+const chatbox=document.getElementById("chatbox");
 
-/* SCROLL REVEAL */
-window.addEventListener("scroll",()=>{
- document.querySelectorAll(".reveal").forEach(el=>{
-  if(el.getBoundingClientRect().top<window.innerHeight-100){
-    el.classList.add("active");
-  }
- });
+input.addEventListener("keypress",function(e){
+ if(e.key==="Enter"){
+  let user=input.value;
+  chatbox.innerHTML+="<div>🧑 "+user+"</div>";
+
+  let reply="I am Sudheer's AI 🤖";
+
+  if(user.includes("name")) reply="My name is Sudheer";
+  if(user.includes("skills")) reply="HTML CSS JS DSA";
+
+  chatbox.innerHTML+="<div>🤖 "+reply+"</div>";
+  input.value="";
+ }
 });
 
 </script>

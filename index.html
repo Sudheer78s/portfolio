@@ -1,80 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudheer Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudheer | Portfolio</title>
 
-  <!-- ✅ External CSS -->
-  <link rel="stylesheet" href="styles.css">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0a0a0a;
+  color:#fff;
+  scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 10%;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+}
+
+nav ul li{
+  list-style:none;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#ccc;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#4facfe;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 10%;
+}
+
+.hero-text h1{
+  font-size:60px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero-text p{
+  margin-top:20px;
+  color:#aaa;
+  max-width:500px;
+}
+
+.btn{
+  margin-top:20px;
+  display:inline-block;
+  padding:12px 25px;
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  border-radius:30px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* IMAGE */
+.hero img{
+  width:300px;
+  border-radius:50%;
+  box-shadow:0 0 40px rgba(79,172,254,0.5);
+}
+
+/* SECTION */
+section{
+  padding:100px 10%;
+  text-align:center;
+}
+
+h2{
+  font-size:40px;
+  margin-bottom:30px;
+}
+
+/* SKILLS */
+.skills span{
+  display:inline-block;
+  padding:10px 20px;
+  margin:10px;
+  border-radius:20px;
+  background:#111;
+  border:1px solid #333;
+}
+
+/* PROJECTS */
+.project{
+  background:#111;
+  padding:20px;
+  margin:20px auto;
+  max-width:500px;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.project:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 20px rgba(79,172,254,0.3);
+}
+
+/* FOOTER */
+footer{
+  padding:30px;
+  text-align:center;
+  background:#000;
+  color:#aaa;
+}
+</style>
 </head>
 
 <body>
 
-  <nav class="navbar">
-    <a href="#" class="logo">Sudheer</a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="logo">Sudheer</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <section id="home" class="section hero">
-    <div class="hero-content">
-      <h1>Hi, I'm <span class="highlight">Sudheer 👋</span></h1>
-      <p>A Computer Science student passionate about web development and DSA.</p>
-      <div class="hero-buttons">
-        <a href="resume.pdf" class="btn" download>Download Resume</a>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Hi, I'm <span class="gradient">Sudheer</span></h1>
+    <p>A passionate web developer & problem solver building modern web experiences.</p>
+    <a href="#" class="btn">Download Resume</a>
+  </div>
 
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <p>
-        I am a B.Tech CSE student passionate about web development,
-        data structures, AI, and building modern websites.
-      </p>
-    </div>
-  </section>
+  <img src="profile.png" alt="profile">
+</section>
 
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <p>A responsive personal portfolio website hosted on Vercel.</p>
-      </div>
-      <div class="project-card">
-        <h3>Student Management System</h3>
-        <p>A CRUD-based student record management project.</p>
-      </div>
-    </div>
-  </section>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am a B.Tech Computer Science student passionate about web development,
+    data structures, and creating beautiful, high-performance websites.
+  </p>
+</section>
 
-  <section id="contact" class="section contact">
-    <h2>Contact</h2>
-    <p>Email: sudheer@example.com</p>
-    <p>
-      GitHub:
-      <a href="https://github.com/Sudheer78s" target="_blank">
-        github.com/Sudheer78s
-      </a>
-    </p>
-    <p>
-      LinkedIn:
-      <a href="https://linkedin.com" target="_blank">
-        linkedin.com/in/sudheer
-      </a>
-    </p>
-  </section>
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>C++</span>
+    <span>DSA</span>
+    <span>Git</span>
+  </div>
+</section>
 
-  <footer>
-    © 2026 Sudheer Sharma | Portfolio
-  </footer>
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>Portfolio Website</h3>
+    <p>Responsive modern portfolio built with HTML, CSS & deployed on Vercel.</p>
+  </div>
+
+  <div class="project">
+    <h3>Student Management System</h3>
+    <p>CRUD-based project using JavaScript for managing student records.</p>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: sudheer@example.com</p>
+  <p>GitHub: github.com/Sudheer78s</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Sudheer Sharma | All Rights Reserved
+</footer>
 
 </body>
 </html>

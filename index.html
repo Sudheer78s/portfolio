@@ -3,76 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudheer | Portfolio</title>
+<title>Sudheer | Developer Portfolio</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
   background:#0a0a0a;
   color:#fff;
-  scroll-behavior:smooth;
+  overflow-x:hidden;
 }
+
+/* SCROLL BAR */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:#4facfe;border-radius:10px;}
 
 /* NAVBAR */
 nav{
   position:fixed;
-  top:0;
   width:100%;
+  padding:20px 10%;
   display:flex;
   justify-content:space-between;
-  padding:20px 10%;
+  backdrop-filter:blur(15px);
   background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
   z-index:1000;
 }
 
 .logo{
-  font-size:24px;
+  font-size:26px;
   font-weight:800;
   background:linear-gradient(90deg,#00f2fe,#4facfe);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-nav ul{
-  display:flex;
-  gap:30px;
-}
-
-nav ul li{
-  list-style:none;
-}
-
+nav ul{display:flex;gap:30px;}
+nav ul li{list-style:none;}
 nav ul li a{
   text-decoration:none;
-  color:#ccc;
+  color:#aaa;
   transition:0.3s;
 }
-
-nav ul li a:hover{
-  color:#4facfe;
-}
+nav ul li a:hover{color:#4facfe;}
 
 /* HERO */
 .hero{
   height:100vh;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:0 10%;
 }
 
 .hero-text h1{
-  font-size:60px;
+  font-size:70px;
 }
 
 .gradient{
@@ -81,84 +68,94 @@ nav ul li a:hover{
   color:transparent;
 }
 
-.hero-text p{
-  margin-top:20px;
+.typing{
+  font-size:25px;
+  margin-top:10px;
   color:#aaa;
-  max-width:500px;
 }
 
 .btn{
-  margin-top:20px;
   display:inline-block;
-  padding:12px 25px;
-  background:linear-gradient(90deg,#00f2fe,#4facfe);
+  margin-top:20px;
+  padding:12px 30px;
   border-radius:30px;
+  background:linear-gradient(90deg,#00f2fe,#4facfe);
   text-decoration:none;
   color:#fff;
-  font-weight:600;
   transition:0.3s;
 }
+.btn:hover{transform:scale(1.1);}
 
-.btn:hover{
-  transform:scale(1.05);
+/* PROFILE */
+.hero img{
+  width:320px;
+  border-radius:50%;
+  box-shadow:0 0 60px rgba(79,172,254,0.5);
+  animation:float 4s ease-in-out infinite;
 }
 
-/* IMAGE */
-.hero img{
-  width:300px;
-  border-radius:50%;
-  box-shadow:0 0 40px rgba(79,172,254,0.5);
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
 }
 
 /* SECTION */
 section{
-  padding:100px 10%;
+  padding:120px 10%;
   text-align:center;
 }
 
 h2{
-  font-size:40px;
+  font-size:45px;
   margin-bottom:30px;
 }
 
-/* SKILLS */
-.skills span{
-  display:inline-block;
-  padding:10px 20px;
-  margin:10px;
-  border-radius:20px;
-  background:#111;
-  border:1px solid #333;
-}
-
-/* PROJECTS */
-.project{
-  background:#111;
+/* CARDS */
+.card{
+  background:rgba(255,255,255,0.05);
   padding:20px;
-  margin:20px auto;
-  max-width:500px;
-  border-radius:15px;
+  border-radius:20px;
+  margin:20px;
+  backdrop-filter:blur(10px);
   transition:0.3s;
 }
 
-.project:hover{
+.card:hover{
   transform:translateY(-10px);
   box-shadow:0 0 20px rgba(79,172,254,0.3);
 }
 
+/* SKILLS */
+.skills span{
+  padding:10px 20px;
+  margin:10px;
+  display:inline-block;
+  border-radius:20px;
+  border:1px solid #333;
+}
+
 /* FOOTER */
 footer{
-  padding:30px;
+  padding:40px;
   text-align:center;
   background:#000;
-  color:#aaa;
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">Sudheer</div>
   <ul>
@@ -170,28 +167,23 @@ footer{
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-text">
     <h1>Hi, I'm <span class="gradient">Sudheer</span></h1>
-    <p>A passionate web developer & problem solver building modern web experiences.</p>
+    <div class="typing" id="typing"></div>
     <a href="#" class="btn">Download Resume</a>
   </div>
-
-  <img src="profile.png" alt="profile">
+  <img src="profile.png">
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<section id="about" class="reveal">
   <h2>About Me</h2>
-  <p>
-    I am a B.Tech Computer Science student passionate about web development,
-    data structures, and creating beautiful, high-performance websites.
-  </p>
+  <div class="card">
+    <p>I am a passionate developer focused on building modern and responsive websites with great UI.</p>
+  </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<section id="skills" class="reveal">
   <h2>Skills</h2>
   <div class="skills">
     <span>HTML</span>
@@ -203,33 +195,62 @@ footer{
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="reveal">
   <h2>Projects</h2>
 
-  <div class="project">
-    <h3>Portfolio Website</h3>
-    <p>Responsive modern portfolio built with HTML, CSS & deployed on Vercel.</p>
+  <div class="card">
+    <h3>Portfolio</h3>
+    <p>Modern responsive portfolio website.</p>
   </div>
 
-  <div class="project">
-    <h3>Student Management System</h3>
-    <p>CRUD-based project using JavaScript for managing student records.</p>
+  <div class="card">
+    <h3>Student System</h3>
+    <p>CRUD-based system using JS.</p>
   </div>
 
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="reveal">
   <h2>Contact</h2>
   <p>Email: sudheer@example.com</p>
   <p>GitHub: github.com/Sudheer78s</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  © 2026 Sudheer Sharma | All Rights Reserved
+  © 2026 Sudheer Sharma
 </footer>
+
+<script>
+
+/* TYPING EFFECT */
+const text = ["Web Developer", "DSA Enthusiast", "Problem Solver"];
+let i=0,j=0,current='',isDeleting=false;
+function type(){
+  if(i<text.length){
+    if(!isDeleting && j<=text[i].length){
+      current=text[i].substring(0,j++);
+    } else if(isDeleting && j>=0){
+      current=text[i].substring(0,j--);
+    }
+    document.getElementById("typing").innerHTML=current;
+    if(j==text[i].length){isDeleting=true;}
+    if(j==0){isDeleting=false;i++;}
+  } else i=0;
+  setTimeout(type,100);
+}
+type();
+
+/* SCROLL REVEAL */
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    let top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+
+</script>
 
 </body>
 </html>

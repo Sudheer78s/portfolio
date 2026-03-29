@@ -4,118 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sudheer Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      scroll-behavior: smooth;
-    }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-      background: #000;
-      position: sticky;
-      top: 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 60px;
-    }
-
-    h2 {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: white;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .project-card {
-      background: #222;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 500px;
-      border-radius: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #000;
-    }
-  </style>
+  <!-- ✅ External CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <nav class="navbar">
+    <a href="#" class="logo">Sudheer</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
-  <section id="home">
-    <h1>Hi, I'm Sudheer 👋</h1>
-    <p>A Computer Science student passionate about web development and DSA.</p>
-    <a href="resume.pdf" class="btn" download>Download Resume</a>
+  <section id="home" class="section hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="highlight">Sudheer 👋</span></h1>
+      <p>A Computer Science student passionate about web development and DSA.</p>
+      <div class="hero-buttons">
+        <a href="resume.pdf" class="btn" download>Download Resume</a>
+      </div>
+    </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="section">
     <h2>About Me</h2>
-    <p>
-      I am a B.Tech CSE student passionate about web development,
-      data structures, AI, and building modern websites.
-    </p>
+    <div class="about-content">
+      <p>
+        I am a B.Tech CSE student passionate about web development,
+        data structures, AI, and building modern websites.
+      </p>
+    </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="section">
     <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Portfolio Website</h3>
-      <p>A responsive personal portfolio website hosted on Vercel.</p>
-    </div>
-    <div class="project-card">
-      <h3>Student Management System</h3>
-      <p>A CRUD-based student record management project.</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A responsive personal portfolio website hosted on Vercel.</p>
+      </div>
+      <div class="project-card">
+        <h3>Student Management System</h3>
+        <p>A CRUD-based student record management project.</p>
+      </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="section contact">
     <h2>Contact</h2>
     <p>Email: sudheer@example.com</p>
     <p>
       GitHub:
-      <a href="https://github.com/Sudheer78s" target="_blank" style="color:white;">
+      <a href="https://github.com/Sudheer78s" target="_blank">
         github.com/Sudheer78s
       </a>
     </p>
     <p>
       LinkedIn:
-      <a href="https://linkedin.com" target="_blank" style="color:white;">
+      <a href="https://linkedin.com" target="_blank">
         linkedin.com/in/sudheer
       </a>
     </p>

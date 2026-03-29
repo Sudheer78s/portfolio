@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudheer | Apple Style Portfolio</title>
+<title>Sudheer | PRO MAX</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- THREE JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -17,25 +20,33 @@ body{
   background:#000;
   color:#fff;
   overflow-x:hidden;
+  transition:0.3s;
+}
+
+/* DARK LIGHT */
+.light{
+  background:#fff;
+  color:#000;
 }
 
 /* NAV */
 nav{
   position:fixed;
   width:100%;
-  padding:20px 10%;
+  padding:20px;
   display:flex;
   justify-content:space-between;
   backdrop-filter:blur(20px);
+  z-index:1000;
 }
 
-.logo{
-  font-size:24px;
-  font-weight:800;
-  color:#fff;
+button{
+  padding:10px;
+  cursor:pointer;
 }
 
-section{
+/* HERO */
+.hero{
   height:100vh;
   display:flex;
   justify-content:center;
@@ -43,10 +54,8 @@ section{
   flex-direction:column;
 }
 
-/* HERO */
-.hero h1{
+h1{
   font-size:80px;
-  text-align:center;
 }
 
 .gradient{
@@ -55,22 +64,12 @@ section{
   color:transparent;
 }
 
-/* 3D CARD */
-.card{
-  width:300px;
-  height:200px;
-  background:#111;
-  border-radius:20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:20px;
-  transition:0.3s;
-  transform-style:preserve-3d;
-}
-
-.card:hover{
-  transform:rotateY(15deg) rotateX(10deg);
+/* PARTICLES */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 /* CHATBOT */
@@ -78,75 +77,112 @@ section{
   position:fixed;
   bottom:20px;
   right:20px;
-  width:300px;
+  width:280px;
   background:#111;
-  border-radius:15px;
   padding:10px;
+  border-radius:10px;
 }
+.chatbox{height:120px;overflow:auto;}
+input{width:100%;padding:8px;margin-top:5px;}
 
-.chatbot input{
-  width:100%;
-  padding:10px;
-  border:none;
-  background:#222;
-  color:#fff;
-}
-
-.chatbox{
-  height:150px;
-  overflow:auto;
-  font-size:14px;
-  margin-bottom:10px;
-}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">Sudheer</div>
+  <div>Sudheer</div>
+  <div>
+    <button onclick="toggleTheme()">🌙</button>
+    <button onclick="playMusic()">🎵</button>
+  </div>
 </nav>
 
-<section class="hero">
-  <h1>Hello, I'm <span class="gradient">Sudheer</span></h1>
-</section>
+<canvas id="bg"></canvas>
 
-<section>
-  <h2>Projects</h2>
-  <div class="card">Project 1</div>
-  <div class="card">Project 2</div>
+<section class="hero">
+  <h1>Hello I'm <span class="gradient">Sudheer</span></h1>
 </section>
 
 <!-- CHATBOT -->
 <div class="chatbot">
   <div class="chatbox" id="chatbox"></div>
-  <input type="text" id="input" placeholder="Ask me...">
+  <input id="input" placeholder="Ask me...">
 </div>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <script>
 
-/* GSAP ANIMATION */
-gsap.from(".hero h1",{y:100,opacity:0,duration:1});
+/* THEME */
+function toggleTheme(){
+ document.body.classList.toggle("light");
+}
 
-/* PARALLAX */
-window.addEventListener("scroll",()=>{
-  document.querySelector(".hero h1").style.transform =
-  "translateY("+window.scrollY*0.5+"px)";
-});
+/* MUSIC */
+function playMusic(){
+ document.getElementById("music").play();
+}
 
-/* AI CHATBOT */
+/* GSAP */
+gsap.from("h1",{y:100,opacity:0,duration:1});
+
+/* PARTICLES */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<100;i++){
+ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:1,vy:1});
+}
+
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ particles.forEach(p=>{
+   p.x+=p.vx;
+   p.y+=p.vy;
+   ctx.fillRect(p.x,p.y,2,2);
+ });
+ requestAnimationFrame(animate);
+}
+animate();
+
+/* THREE JS 3D */
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const geometry=new THREE.BoxGeometry();
+const material=new THREE.MeshBasicMaterial({color:0x00ffff,wireframe:true});
+const cube=new THREE.Mesh(geometry,material);
+scene.add(cube);
+
+camera.position.z=5;
+
+function render3D(){
+ cube.rotation.x+=0.01;
+ cube.rotation.y+=0.01;
+ renderer.render(scene,camera);
+ requestAnimationFrame(render3D);
+}
+render3D();
+
+/* CHATBOT */
 const input=document.getElementById("input");
 const chatbox=document.getElementById("chatbox");
 
 input.addEventListener("keypress",function(e){
  if(e.key==="Enter"){
-  let user=input.value;
-  chatbox.innerHTML+="<div>🧑 "+user+"</div>";
+  let msg=input.value;
+  chatbox.innerHTML+="<div>🧑 "+msg+"</div>";
 
-  let reply="I am Sudheer's AI 🤖";
-
-  if(user.includes("name")) reply="My name is Sudheer";
-  if(user.includes("skills")) reply="HTML CSS JS DSA";
+  let reply="I am Sudheer AI 🤖";
+  if(msg.includes("name")) reply="Sudheer Sharma";
+  if(msg.includes("skills")) reply="HTML CSS JS DSA";
 
   chatbox.innerHTML+="<div>🤖 "+reply+"</div>";
   input.value="";
